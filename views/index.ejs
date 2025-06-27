@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- ✅ Added Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <title>URL Shortener</title>
+
+  <!-- ✅ Custom CSS styles to enhance layout and design -->
+  <style>
+    body {
+      background-color: #f8f9fa; /* Light gray background for a clean look */
+    }
+    .container {
+      margin-top: 50px; /* Push main content down for spacing */
+    }
+    .form-inline input {
+      flex: 1; /* Makes input box expand to fill space */
+    }
+    table a {
+      word-break: break-all; /* Prevent long URLs from breaking layout */
+    }
+    table tr:hover {
+      background-color: #f1f1f1; /* Row hover effect for better UX */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Added a Navbar for branding -->
+  <nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar with center-aligned title -->
+    <span class="navbar-brand mb-0 h1 mx-auto">🔗 URL Shortener</span>
+  </nav>
+
+  <!-- ✅ Main content container with spacing -->
+  <div class="container">
+
+    <!-- ✅ Card UI to wrap the form -->
+    <div class="card shadow-sm">
+      <div class="card-body">
+
+        <!-- ✅ Section Title -->
+        <h4 class="card-title text-center mb-4">Enter a URL to shorten</h4>
+
+        <!-- ✅ Form aligned and styled -->
+        <form action="/shortUrls" method="POST" class="form-inline justify-content-center">
+          <input 
+            required 
+            placeholder="Paste your long URL here..." 
+            type="url" 
+            name="fullUrl" 
+            id="fullUrl" 
+            class="form-control mr-2 w-75"  
+          >
+          <button class="btn btn-primary" type="submit">Shrink</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ✅ Table section starts here -->
+    <div class="mt-5">
+      <h5 class="mb-3">Your shortened URLs:</h5>
+
+      <!-- ✅ Responsive table wrapper -->
+      <div class="table-responsive">
+
+        <!-- ✅ Styled table using Bootstrap classes -->
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Full URL</th>
+              <th>Short URL</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- ✅ EJS loop to display all shortened URLs -->
+            <% shortUrls.forEach(shortUrl => { %>
+              <tr>
+
+                <!-- ✅ Full URL with link and primary color -->
+                <td>
+                  <a href="<%= shortUrl.full %>" target="_blank" class="text-primary">
+                    <%= shortUrl.full %>
+                  </a>
+                </td>
+
+                <!-- ✅ Short URL displayed with full host path and styled -->
+                <td>
+                   <div class="d-flex align-items-center">
+                     <a href="/<%= shortUrl.short %>" target="_blank" class="text-success font-weight-bold mr-2">
+                       <%= request.headers.host + '/' + shortUrl.short %>
+                     </a>
+                       <button class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('<%= request.headers.host + '/' + shortUrl.short %>')">
+                        copy
+                        </button>
+                        <p class="text-muted mb-0">Total Clicks: <%= shortUrl.clicks %></p> <!-- ✅ Add this here -->
+                     </div>
+                </td>
+
+                <!-- ✅ Click count displayed normally -->
+                <td><%= shortUrl.clicks %></td>
+
+              </tr>
+            <% }) %>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ✅ Copy-to-Clipboard Script -->
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert("Copied to clipboard: " + text);
+      }, function(err) {
+        alert("Failed to copy: ", err);
+      });
+    }
+  </script>
+</body>
+</html>

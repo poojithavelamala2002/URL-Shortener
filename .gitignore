@@ -1,0 +1,5 @@
+# 🧠 Node.js: Ignore heavy dependencies
+node_modules/
+
+# 🔐 Don't push secrets or credentials
+.env
