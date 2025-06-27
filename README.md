@@ -41,26 +41,23 @@ npm install
 ### 3. Create a .env File
 Inside the root of the project, create a .env file and add your MongoDB URI:
 ```bash
-env
-Copy
-Edit
 MONGO_URI=your_mongodb_connection_string
 ```
 Replace with your actual MongoDB Atlas URI
 
+---
+
 ### 4. Start the Server
 ```bash
-Copy
-Edit
 npm start
 ```
 Then open your browser and visit:
 http://localhost:5000
 
-## 🧾 Folder Structure
+---
+
+### 🧾 Folder Structure
 ```pgsql
-Copy
-Edit
 url-shortener/
 ├── models/
 │   └── shortUrl.js
@@ -71,6 +68,10 @@ url-shortener/
 ├── server.js
 └── package.json
 ```
+
+---
+
+
 ## 📦 Future Improvements
 🧑‍💼 Add user authentication (login/signup)
 
@@ -80,12 +81,18 @@ url-shortener/
 
 ⏳ Link expiry or deletion options
 
+---
+
 ### 🌍 Live Demo
 Coming soon... (Let me know if you want help deploying to Render!)
+
+---
 
 ### 🧑‍🎓 Author
 Poojitha Velamala
 Passionate full-stack developer | Clean code enthusiast
+
+---
 
 ### 🛡️ License
 
