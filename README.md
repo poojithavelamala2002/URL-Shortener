@@ -52,7 +52,8 @@ Replace with your actual MongoDB Atlas URI
 npm start
 ```
 Then open your browser and visit:
-```http://localhost:5000
+```
+http://localhost:5000
 ```
 ---
 
