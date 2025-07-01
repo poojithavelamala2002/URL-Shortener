@@ -28,36 +28,36 @@ A simple and powerful Node.js-based URL Shortener web app that lets users conver
 
 ### 1. Clone the Repo
 
-bash
+```bash
 git clone https://github.com/your-username/url-shortener.git
 cd url-shortener
-
+```
 ### 2. Install Dependencies
 
-bash
+```bash
 npm install
-
+```
 
 ### 3. Create a .env File
 Inside the root of the project, create a .env file and add your MongoDB URI:
-bash
+```bash
 MONGO_URI=your_mongodb_connection_string
-
+```
 Replace with your actual MongoDB Atlas URI
 
 ---
 
 ### 4. Start the Server
-bash
+```bash
 npm start
-
+```
 Then open your browser and visit:
-http://localhost:5000
-
+```http://localhost:5000
+```
 ---
 
 ### 🧾 Folder Structure
-pgsql
+```pgsql
 url-shortener/
 ├── models/
 │   └── shortUrl.js
@@ -67,7 +67,7 @@ url-shortener/
 ├── .gitignore
 ├── server.js
 └── package.json
-
+```
 
 ---
 
