@@ -7,7 +7,7 @@ const session = require('express-session');
 
 // ✅ Session setup for tracking latest created URL
 app.use(session({
-  secret: 'url-shortener-session-key', // can be anything
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }));
